@@ -1,0 +1,103 @@
+<%- include('../layouts/header.ejs') %>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-black" style="border-bottom: 1px solid grey;">
+      <div class="container-fluid d-flex justify-content-between mt-4 mb-3">
+        <a class="ms-5 navbar-brand" href="/admin/home">
+          <img class="ms-" src="/img/logo.png" alt="" >
+         
+        </a>
+        <button  class="btn btn-outline-success" style="height: 40px;"><a class="text-decoration-none text-dark" href="/admin/logout">LogOut</a></button>
+
+      </div>
+    </nav>
+  </header >
+
+<style>
+    /* Style for the control panel section */
+    .control-panel {
+      position: relative; /* Fixed position to keep it in place */
+      top: 0; /* Position it at the top of the page */
+      left:0; /* Position it on the left side of the page */
+      height: 100%; /* Make it the full height of the page */
+      width: 200px; /* Set a fixed width for the section */
+      background-color: #f0f0f0; /* Set a background color */
+    }
+    @media only screen and (max-width: 768px) {
+        .control-panel {
+          position: relative; /* Change position to relative for responsive layout */
+          width: 25%; /* Set width to 100% to take up full width of the screen */
+        }
+      }
+  </style>
+  <div class="d-flex">
+  <div class="control-panel d-flex justify-content-center " style="height: 100vh; background-color: grey;">
+    <!-- Your control panel content goes here -->
+
+      <div class="row mt-5">
+        <div class="">
+          <a class="text-decoration-none text-white"style="font-size: small"href="/admin/home">Home</a><br>
+          <a class="text-decoration-none text-white"style="font-size: small"href="/admin/userData">USER DATA</a><br>
+          <a class="text-decoration-none text-white"style="font-size: small"href="/admin/addProduct">ADD PRODUCT</a><br>
+          <a class="text-decoration-none text-white"style="font-size: small"href="/admin/products">PRODUCTS</a><br>
+          <a class="text-decoration-none text-white"style="font-size: small"href="">CATEGORY</a>
+        </div>
+      </div>
+   </div>
+  <div class="d-flex justify-content-center" style="width: 100%;">
+    <div style="width: 100%;">
+    <!-- The rest of your HTML content goes here -->
+
+    <div class="bg-light col-12 p-5">
+            <div class="d-flex justify-content-end">
+                <form>
+                    <input type="text" placeholder="search" name="search">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+            <table id="myTable" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">Edits</th>
+                        <th scope="col-2">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <%
+                if(users.length>0){
+                    for(let i=0;i<users.length;i++){
+                     %>
+                     <tr>
+                        <td><%=users[i].username%></td>
+                        <td><%=users[i].email%></td>
+                        <td><%=users[i].phone%></td>
+        
+                        <td><a href="/admin/unBlockUser?id=<%=users[i]._id%>"><button type="button" class="btn btn-success">Unblock</button></a>
+                            <a href="/admin/blockUser?id=<%=users[i]._id%>"><button type="button" class="btn btn-danger">Block</button></a>
+                       </td>
+                       <td><%=users[i].Status%></td>
+                    </tr>
+                    <%
+                      }
+                } else{
+                    %>
+             <tr>
+                 <td colspan="5">Users Not Found</td>
+             </tr>
+        <% } %>
+                </tbody>
+            </table>
+        </div> 
+   
+
+    
+  </div>
+  </div>
+</div>
+
+<%- include('../layouts/footer.ejs') %>
+
+

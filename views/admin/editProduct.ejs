@@ -1,0 +1,146 @@
+<%- include('../layouts/header.ejs') %>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-black" style="border-bottom: 1px solid grey;">
+      <div class="container-fluid d-flex justify-content-between mt-4 mb-3">
+        <a class="ms-5 navbar-brand" href="/admin/home">
+          <img class="ms-" src="/img/logo.png" alt="">
+
+        </a>
+
+        <button class="btn btn-outline-success" style="height: 40px;"><a class="text-decoration-none text-dark"
+            href="/admin/logout">LogOut</a></button>
+
+
+      </div>
+    </nav>
+  </header>
+
+  <style>
+    /* Style for the control panel section */
+    .control-panel {
+      position: relative;
+      /* Fixed position to keep it in place */
+      top: 0;
+      /* Position it at the top of the page */
+      left: 0;
+      /* Position it on the left side of the page */
+      height: 100%;
+      /* Make it the full height of the page */
+      width: 200px;
+      /* Set a fixed width for the section */
+      background-color: #f0f0f0;
+      /* Set a background color */
+    }
+
+    @media only screen and (max-width: 768px) {
+      .control-panel {
+        position: fixed;
+        /* Change position to relative for responsive layout */
+        width: 25%;
+        /* Set width to 100% to take up full width of the screen */
+      }
+    }
+  </style>
+  <div class="d-flex">
+    <div class="control-panel d-flex justify-content-center " style="height: 100vh; background-color: grey;">
+      <!-- Your control panel content goes here -->
+
+
+
+      <div class="row mt-5">
+        <div class="">
+          <a class="text-decoration-none text-white" style="font-size: small" href="/admin/home">Home</a><br>
+          <a class="text-decoration-none text-white" style="font-size: small" href="/admin/userData">USER DATA</a><br>
+          <a class="text-decoration-none text-white" style="font-size: small" href="/admin/addProduct">ADD
+            PRODUCT</a><br>
+          <a class="text-decoration-none text-white" style="font-size: small" href="/admin/products">PRODUCTS</a><br>
+          <a class="text-decoration-none text-white" style="font-size: small" href="">CATEGORY</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="d-flex justify-content-center" style="width: 100%;">
+      <div style="width: 100%;">
+        <!-- The rest of your HTML content goes here -->
+
+
+        <div class="container tm-mt-big tm-mb-big">
+          <div class="row">
+            <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+              <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                <div class="row tm-edit-product-row">
+                  <div class="col-xl-6 col-lg-6 col-md-12">
+                    <form action="/admin/editProduct?id=<%=product[0]._id%>" method="post" class="tm-edit-product-form"
+                      enctype="multipart/form-data">
+                      <div class="form-group mb-3">
+                        <label for="">Name</label>
+                        <input name="title" type="text" value="<%=product[0].title%>" class="form-control" />
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="">Brand</label>
+                        <input name="brand" type="text" value="<%= product[0].brand %>" class="form-control" />
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="">Description</label>
+                        <input name="description" type="text" value="<%= product[0].description %>"
+                          class="form-control" />
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="">Price</label>
+                        <input name="price" type="float" value="<%= product[0].price %>" class="form-control" />
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="">Stock</label>
+                        <input name="stocks" type="number" value="<%= product[0].stocks %>" class="form-control" />
+                      </div>
+                      <div class="form-group mb-3">
+                        <label for="category">Category</label>
+                        <select name="category" class="custom-select tm-select-accounts" id="category">
+                          <option selected>Select category</option>
+                          <option selected>Category</option>
+                          <% if(category.length>0){
+                            for(let i=0;i<category.length;i++){ %>
+                              <option value="<%=category[i].category%>">
+                                <%=category[i].category%>
+                              </option>
+                              <% } } %>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+                    <div>
+
+                      <div class="d-flex justify-content-center">
+                        <div class="btn btn-dark btn-rounded">
+                          <img src="/proImage/<%=product[0].image[0]%>" alt="">
+                          <label class="form-label text-white m-1" for="customFile2">Change Image</label>
+                          <input value="/proImage/<%=product[0].image[0]%>" type="file" name="image"
+                            class="form-control d-none" id="customFile2" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 mb-4">
+                    <button type="submit" class="btn btn-dark text-uppercase">Update Product Now</button>
+                  </div>
+                  </form>
+                  <form action="/admin/addCategory" method="post">
+                    <div class="row">
+                      <div class="col-6">
+                        <input class="form-control" type="text" name="newcategory" value="new category"><br>
+                        <button class="btn btn-dark text-uppercase" type="submit">Add New Category</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('../layouts/footer.ejs') %>
