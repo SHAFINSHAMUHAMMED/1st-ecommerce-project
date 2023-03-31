@@ -1,0 +1,228 @@
+<%- include('../layouts/header.ejs') %>
+
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top" style="background-color: black;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7">
+                        <div class=" mt-3">
+                            <p class="" style="color: white; margin-bottom: 1;">Free shipping, 30-day return or refund
+                                guarantee.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-5">
+                        <div class=" d-flex  justify-content-end mt-4">
+                            <a class="" style="text-decoration: none; color: white;" href="#">FAQs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <header>
+            <nav class="navbar navbar-expand-lg ml-5 navbar-light bg-black">
+                <div class="container-fluid">
+                    <a class="ms-5 navbar-brand" href="/loginHome">
+                        <img class="ms-" src="/img/logo.png" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon bg-light"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item" style="margin-right: 15px;">
+                                <a class="nav-link active tex-hov" aria-current="page" href="#">HOME</a>
+                            </li>
+                            <li class="nav-item" style="margin-right: 15px;">
+                                <a class="nav-link tex-hov" href="/shopPage">SHOP</a>
+                            </li>
+                            
+                            <li class="nav-item" style="margin-right: 15px;">
+                                <a class="nav-link tex-hov" href="/contactus">CONTACT</a>
+                            </li>
+                        </ul>
+                        <div class="col-lg-3 col-md-3 ms-5">
+                            <div class="header__nav__option d-flex">
+                           
+                                <a href="/wishList"><img src="/img/icon/heart.png" alt=""></a>
+                                <a href="/addToCart"><img src="/img/icon/cart.png" alt=""> <span>c</span></a>
+                                
+
+                                
+                               
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <%if(userData.image){%>
+                        <div><a href="/userProfile"><img src="/userProfileIMG/<%=userData.image%>"
+                                    style="width: 60px; height: 40px;" class="rounded-circle" alt=""></a></div>
+                        <%}else{%>
+                            <div><a href="/userProfile"><img
+                                        src="https://cdn-icons-png.flaticon.com/128/2815/2815428.png"
+                                        style="width: 60px; height: 40px;" class="rounded-circle" alt=""></a></div>
+                            <%}%>
+                                <div class="header__right__auth col">
+                                    <% if(session!=null){ %>
+
+                                        <a href="/logout"> <button type="button" class="anni-button"
+                                                style="vertical-align: middle;"><span> Logout</span></button> </a>
+                                        <% }else{%>
+                                            <a class="" style="color: black;" href="/login"><b> Login </b></a>
+                                            <%}%>
+
+                                </div>
+                </div>
+            </nav>
+        </header>
+
+
+
+        <section class="shopping-cart spad">
+            <div class="container ">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 row">
+                        <div class="shopping__cart__table col-auto">
+                            <div>
+
+                                <div class="d-flex me-5" style="justify-content: space-between;">
+                                    <h4 class="p-3"><span class=""> Select Your Address</span></h4>
+                                    <div class="d-flex justify-content-center p-3">
+
+                                        <a href="/addNewAddress"> <button class=" " type="button">Add New
+                                                Address</button> </a>
+
+                                    </div>
+                                </div>
+
+                                <tbody>
+
+                                    <div class="row">
+                                        <% if (userData==undefined) { %>
+                                            <% } else { %>
+                                                <% for (let i=0; i <userData.address.length; i++) { %>
+                                                    <div class="product__cart__item">
+                                                        <div class="product__cart__item__text d-flex">
+                                                            <div class="input-group ">
+
+                                                                <div class="mb-1 d-flex">
+
+                                                                    <textarea name="address" id="inputOrgName" cols="80"
+                                                                        rows="5" class="form-control"
+                                                                        placeholder="Enter your address">
+                                                            <%=userData.address[i].username%> 
+                                                             <%=userData.address[i].address%>
+                                                            <%=userData.email%>
+                                                            <%=userData.address[i].phone%>
+                                                            <%=userData.address[i].zip%>
+                                                            </textarea>
+
+                                                                </div>
+                                                                <div class="d-flex mb-3"
+                                                                    style="justify-content: center;">
+
+                                                                    <a href="/addAddress?index=<%= i %>"> <button
+                                                                            class="ms-2" type="button">Select</button>
+                                                                    </a>
+
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <% } %>
+                                                        <% } %>
+
+                                    </div>
+
+
+                                </tbody>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer__about">
+                            <div class="footer__logo">
+                                <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                            </div>
+                            <p>The customer is at the heart of our unique business model, which includes design.</p>
+                            <a href="#"><img src="img/payment.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                        <div class="footer__widget">
+                            <h6>Shopping</h6>
+                            <ul>
+                                <li><a href="#">Clothing Store</a></li>
+                                <li><a href="#">Trending Shoes</a></li>
+                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">Sale</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+                        <div class="footer__widget">
+                            <h6>Shopping</h6>
+                            <ul>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Payment Methods</a></li>
+                                <li><a href="#">Delivary</a></li>
+                                <li><a href="#">Return & Exchanges</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                        <div class="footer__widget">
+                            <h6>NewLetter</h6>
+                            <div class="footer__newslatter">
+                                <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                                <form action="#">
+                                    <input type="text" placeholder="Your email">
+                                    <button type="submit"><span class="icon_mail_alt"></span></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="footer__copyright__text">
+
+                            <p>Copyright ©
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>2020
+                                All rights reserved | MaleFashions <i class="" aria-hidden="true"></i>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <%- include('../layouts/footer.ejs') %>

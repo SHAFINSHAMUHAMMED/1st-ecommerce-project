@@ -85,3 +85,65 @@
   background-color: lightgray;
 }</style>
 <%- include('../layouts/footer.ejs')%>
+<script>
+  const form = document.querySelector('form');
+  const usernameInput = document.querySelector('input[name="username"]');
+  const emailInput = document.querySelector('input[name="email"]');
+  const phoneInput = document.querySelector('input[name="phone"]');
+  const passwordInput = document.querySelector('input[name="password"]');
+  const rpasswordInput = document.querySelector('input[name="Rpassword"]');
+  const errorDiv = document.querySelector('#error');
+
+  form.addEventListener('submit', (event) => {
+    let isValid = true;
+    errorDiv.innerHTML = '';
+
+    if (!usernameInput.value) {
+      isValid = false;
+      const error = document.createElement('div');
+      error.innerText = 'Please enter a username.';
+      errorDiv.appendChild(error);
+    }
+
+    if (!emailInput.value) {
+      isValid = false;
+      const error = document.createElement('div');
+      error.innerText = 'Please enter an email address.';
+      errorDiv.appendChild(error);
+    }
+
+    if (!phoneInput.value) {
+      isValid = false;
+      const error = document.createElement('div');
+      error.innerText = 'Please enter a phone number.';
+      errorDiv.appendChild(error);
+    }
+
+    if (!passwordInput.value) {
+      isValid = false;
+      const error = document.createElement('div');
+      error.innerText = 'Please enter a password.';
+      errorDiv.appendChild(error);
+    }
+
+    if (!rpasswordInput.value) {
+      isValid = false;
+      const error = document.createElement('div');
+      error.innerText = 'Please repeat your password.';
+      errorDiv.appendChild(error);
+    }
+
+    if (passwordInput.value !== rpasswordInput.value) {
+      isValid = false;
+      const error = document.createElement('div');
+      error.innerText = 'Passwords do not match.';
+      errorDiv.appendChild(error);
+    }
+
+    if (!isValid) {
+      event.preventDefault();
+    }
+  });
+</script>
+
+<div id="error"></div>

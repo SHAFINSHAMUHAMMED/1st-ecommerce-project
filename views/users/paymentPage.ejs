@@ -1,0 +1,414 @@
+<%- include('../layouts/header.ejs') %>
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+  <header class="header">
+    <div class="header__top" style="background-color: black;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-7">
+            <div class=" mt-3">
+              <p class="" style="color: white; margin-bottom: 1;">Free shipping, 30-day return or refund
+                guarantee.</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-5">
+            <div class=" d-flex  justify-content-end mt-4">
+              <a class="" style="text-decoration: none; color: white;" href="#">FAQs</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <nav class="navbar navbar-expand-lg ml-5 navbar-light bg-black">
+        <div class="container-fluid">
+          <a class="ms-5 navbar-brand" href="/loginHome">
+            <img class="ms-" src="/img/logo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon bg-light"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item" style="margin-right: 15px;">
+                    <a class="nav-link active tex-hov" aria-current="page" href="#">HOME</a>
+                </li>
+                <li class="nav-item" style="margin-right: 15px;">
+                    <a class="nav-link tex-hov" href="/shopPage">SHOP</a>
+                </li>
+                
+                <li class="nav-item" style="margin-right: 15px;">
+                    <a class="nav-link tex-hov" href="/contactus">CONTACT</a>
+                </li>
+            </ul>
+            <div class="col-lg-3 col-md-3 ms-5">
+                <div class="header__nav__option d-flex">
+               
+                    <a href="/wishList"><img src="/img/icon/heart.png" alt=""></a>
+                    <a href="/addToCart"><img src="/img/icon/cart.png" alt=""> <span>c</span></a>
+                    
+                </div>
+            </div>
+
+        </div>
+          <%if(userData.image){%>
+            <div><a href="/userProfile"><img src="/userProfileIMG/<%=userData.image%>"
+                  style="width: 60px; height: 40px;" class="rounded-circle" alt=""></a></div>
+            <%}else{%>
+              <div><a href="/userProfile"><img src="https://cdn-icons-png.flaticon.com/128/2815/2815428.png"
+                    style="width: 60px; height: 40px;" class="rounded-circle" alt=""></a></div>
+              <%}%>
+                <div class="header__right__auth col">
+                  <% if(session!=null){ %>
+
+                    <a href="/logout"> <button type="button" class="anni-button" style="vertical-align: middle;"><span>
+                          Logout</span></button> </a>
+                    <% }else{%>
+                      <a class="" style="color: black;" href="/login"><b> Login </b></a>
+                      <%}%>
+
+                </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <div class="container d-flex justify-content-center mt-5 mb-5" style="background-color: antiquewhite;">
+
+
+
+      <div class="col mt-5">
+        <div class="d-flex" style="justify-content: start;">
+          <div class="col-md-6">
+
+            <span><b> Payment Method</b></span>
+            <div class="card mt-3">
+
+              <div class="accordion" id="accordionExample">
+                <form action="/payMethod" method="post">
+                  <div class="card" style="justify-content: space-between;">
+                    <div class="card-header p-0" id="">
+                      <h2 class="mb-0">
+                        <button class="btn btn-light btn-block text-left  p-3 rounded-0 border-bottom-custom"
+                          type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                          aria-controls="collapseTwo">
+                          <div class="d-flex justify-content-between ms-2">
+                            <input class="form-check-input" type="radio" value="wallet" name="radiovalue"
+                              id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1"> <span>Wallet</span>
+                            </label>
+
+
+
+                            <img src="https://cdn-icons-png.flaticon.com/512/482/482541.png" alt="" style="width: 20px; height: 20px;">
+
+                            
+                          </div>
+                          <div class="d-flex justify-content-end mt-3">
+                            <span>₹<b><%=userData.wallet%> </b> </span>
+                          </div>
+                          <div class="d-flex justify-content-end">
+                          <% if(mssg){ %>
+                              
+                            <small class="text-danger"><%=mssg%></small>
+                            <%}else{%>
+                            <%}%>
+                          </div>
+                        </button>
+                      </h2>
+                    </div>
+                    
+                          
+                            
+                          </div>
+                        
+                 
+
+                  <div class="card" style="justify-content: space-between;">
+                    <div class="card-header p-0" id="">
+                      <h2 class="mb-0">
+                        <button class="btn btn-light btn-block text-left  p-3 rounded-0 border-bottom-custom"
+                          type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                          aria-controls="collapseTwo">
+                          <div class="d-flex justify-content-between ms-2">
+                            <input class="form-check-input" type="radio" value="cod" name="radiovalue"
+                              id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1"> <span>Cash On Delivary</span>
+                            </label>
+
+
+
+                            <img src="https://cdn-icons-png.flaticon.com/512/5359/5359666.png" width="30">
+
+
+                          </div>
+                        </button>
+                      </h2>
+                    </div>
+                    <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                          <div class="card-body">
+                            <input type="text" class="form-control" placeholder="Paypal email">
+                          </div>
+                        </div> -->
+                  </div>
+
+                  <div class="card" style="justify-content: space-between;">
+                    <div class="card-header p-0" id="">
+                      <h2 class="mb-0">
+                        <button class="btn btn-light btn-block text-left  p-3 rounded-0 border-bottom-custom"
+                          type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                          aria-controls="collapseTwo">
+                          <div class="d-flex justify-content-between ms-2">
+                            <input class="form-check-input" type="radio" value="online" name="radiovalue"
+                              id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1"> <span>Paypal</span>
+                            </label>
+
+
+
+                            <img src="https://i.imgur.com/7kQEsHU.png" width="30">
+
+
+                          </div>
+                        </button>
+                      </h2>
+                    </div>
+                    <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                          <div class="card-body">
+                            <input type="text" class="form-control" placeholder="Paypal email">
+                          </div>
+                        </div> -->
+                  </div>
+
+                  
+
+                  <!-- 
+
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body payment-card-body">
+                          
+                          <span class="font-weight-normal card-text">Card Number</span>
+                          <div class="input">
+
+                            <i class="fa fa-credit-card"></i>
+                            <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
+                            
+                          </div> 
+
+                          <div class="row mt-3 mb-3">
+
+                            <div class="col-md-6">
+
+                              <span class="font-weight-normal card-text">Expiry Date</span>
+                              <div class="input">
+
+                                <i class="fa fa-calendar"></i>
+                                <input type="text" class="form-control" placeholder="MM/YY">
+                                
+                              </div> 
+                              
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                              <span class="font-weight-normal card-text">CVC/CVV</span>
+                              <div class="input">
+
+                                <i class="fa fa-lock"></i>
+                                <input type="text" class="form-control" placeholder="000">
+                                
+                              </div> 
+                              
+                            </div>
+                            
+
+                          </div>
+
+                          <span class="text-muted certificate-text"><i class="fa fa-lock"></i> Your transaction is secured with ssl certificate</span>
+                         
+                        </div>
+                      </div>
+                    </div> -->
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="d-flex " style="justify-content: end;">
+          <div class="col-md-6">
+            <span><b> Summary</b></span>
+
+            <div class="card mt-3 mb-5">
+
+              <div class="d-flex justify-content-between p-3">
+
+                <div class="d-flex flex-column">
+
+                  <span>Order Amount </span>
+
+
+                </div>
+
+                <div class="mt-1">
+                  <h6>Rs <b>
+                      <%=Math.round(Total-(tax+40))%>
+                    </b></h6>
+
+                </div>
+
+              </div>
+
+              <hr class="mt-0 line">
+
+              <div class="p-3">
+
+                <div class="d-flex justify-content-between mb-2">
+
+                  <span>Shipping Charge</span>
+                  <span>Rs 40</span>
+
+                </div>
+
+                <div class="d-flex justify-content-between">
+
+                  <span>Total GST <i class="fa fa-clock-o"></i></span>
+                  <span>12%</span>
+
+                </div>
+
+
+              </div>
+
+              <hr class="mt-0 line">
+
+              <% let totalPrice=0 %>
+               
+                  <div class="p-3 d-flex justify-content-between">
+
+                    <div class="d-flex flex-column">
+                      <% Total%>
+                        <span><b> Grand Total</b></span>
+
+
+                    </div>
+
+                    <sup class="super-price">
+                      <%= Math.round(Total) %>
+                    </sup>
+                    <input type="hidden" name="total" value="<%=Total%>">
+
+
+
+                  </div>
+
+
+                  <div class="p-3">
+                    <a href="">
+                      <button type="submit" class="btn btn-primary btn-block free-button">Proceed</button>
+                    </a>
+
+                  </div>
+                  </form>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer__about">
+              <div class="footer__logo">
+                <a href="#"><img src="img/footer-logo.png" alt=""></a>
+              </div>
+              <p>The customer is at the heart of our unique business model, which includes design.</p>
+              <a href="#"><img src="img/payment.png" alt=""></a>
+            </div>
+          </div>
+          <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+            <div class="footer__widget">
+              <h6>Shopping</h6>
+              <ul>
+                <li><a href="#">Clothing Store</a></li>
+                <li><a href="#">Trending Shoes</a></li>
+                <li><a href="#">Accessories</a></li>
+                <li><a href="#">Sale</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-6">
+            <div class="footer__widget">
+              <h6>Shopping</h6>
+              <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Payment Methods</a></li>
+                <li><a href="#">Delivary</a></li>
+                <li><a href="#">Return & Exchanges</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+            <div class="footer__widget">
+              <h6>NewLetter</h6>
+              <div class="footer__newslatter">
+                <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                <form action="#">
+                  <input type="text" placeholder="Your email">
+                  <button type="submit"><span class="icon_mail_alt"></span></button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <div class="footer__copyright__text">
+
+              <p>Copyright ©
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>2020
+                All rights reserved | MaleFashions <i class="" aria-hidden="true"></i>
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <%if(message){%>
+      <script>
+         Swal.fire({
+title: '<%=message%>',
+icon: 'error'
+});
+      </script>
+      <%}%>
+      <%if(messa){%>
+        <script>
+           Swal.fire({
+  title: '<%=messa%>',
+  icon: 'error'
+  });
+        </script>
+        <%}%>
+
+
+    <%- include('../layouts/footer.ejs') %>

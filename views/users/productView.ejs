@@ -1,0 +1,384 @@
+<%- include('../layouts/header.ejs') %>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top" style="background-color: black;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7">
+                        <div class=" mt-3">
+                            <p class="" style="color: white; margin-bottom: 1;">Free shipping, 30-day return or refund
+                                guarantee.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-5">
+                        <div class=" d-flex  justify-content-end mt-4">
+                            <a class="" style="text-decoration: none; color: white;" href="#">FAQs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <header>
+            <nav class="navbar navbar-expand-lg ml-5 navbar-light bg-black">
+                <div class="container-fluid">
+                    <a class="ms-5 navbar-brand" href="/loginHome">
+                        <img class="ms-" src="/img/logo.png" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon bg-light"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item" style="margin-right: 15px;">
+                                <a class="nav-link active tex-hov" aria-current="page" href="#">HOME</a>
+                            </li>
+                            <li class="nav-item" style="margin-right: 15px;">
+                                <a class="nav-link tex-hov" href="/shopPage">SHOP</a>
+                            </li>
+                            
+                            <li class="nav-item" style="margin-right: 15px;">
+                                <a class="nav-link tex-hov" href="/contactus">CONTACT</a>
+                            </li>
+                        </ul>
+                        <div class="col-lg-3 col-md-3 ms-5">
+                            <div class="header__nav__option d-flex">
+                           
+                                <a href="/wishList"><img src="/img/icon/heart.png" alt=""></a>
+                                <a href="/addToCart"><img src="/img/icon/cart.png" alt=""> <span>c</span></a>    
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                    <%if(userData.image){%>
+                        <div><a href="/userProfile"><img src="/userProfileIMG/<%=userData.image%>"
+                                    style="width: 60px; height: 40px;" class="rounded-circle" alt=""></a></div>
+                        <%}else{%>
+                            <div><a href="/userProfile"><img
+                                        src="https://cdn-icons-png.flaticon.com/128/2815/2815428.png"
+                                        style="width: 60px; height: 40px;" class="rounded-circle" alt=""></a></div>
+                            <%}%>
+                                <div class="header__right__auth col">
+                                    <% if(session!=null){ %>
+
+                                        <a href="/logout"> <button type="button" class="anni-button"
+                                                style="vertical-align: middle;"><span> Logout</span></button> </a>
+                                        <% }else{%>
+                                            <a class="" style="color: black;" href="/login"><b> Login </b></a>
+                                            <%}%>
+
+                                </div>
+                </div>
+            </nav>
+        </header>
+
+
+        <section class="shop-details mb-5">
+            <div class="product__details__pic">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="product__details__breadcrumb">
+                                <a href="/">Home</a>
+                                <a href="/shopPage">Shop</a>
+                                <span>Product Details</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                                        <div class="product__thumb__pic set-bg"
+                                            data-setbg="/proImage/<%=product.image[0]%>">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
+                                        <div class="product__thumb__pic set-bg"
+                                            data-setbg="/proImage/<%=product.image[1]%>">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
+                                        <div class="product__thumb__pic set-bg"
+                                            data-setbg="/proImage/<%=product.image[2]%>">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
+                                        <div class="product__thumb__pic set-bg"
+                                            data-setbg="/proImage/<%=product.image[3]%>">
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-md-9">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                    <div class="">
+
+
+                                        <a href="/proImage/<%=product.image[0]%>" class="MagicZoom"
+                                            data-options="zoomDistance: 1000"><img
+                                                src="/proImage/<%=product.image[0]%>"></a>
+
+                                        <img src="" alt="">
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                    <div class="">
+                                        <a href="/proImage/<%=product.image[1]%>" class="MagicZoom"
+                                            data-options="zoomDistance: 1000"><img
+                                                src="/proImage/<%=product.image[1]%>"></a>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                    <div class="">
+                                        <a href="/proImage/<%=product.image[2]%>" class="MagicZoom"
+                                            data-options="zoomDistance: 1000"><img
+                                                src="/proImage/<%=product.image[2]%>"></a>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-4" role="tabpanel">
+                                    <div class="">
+                                        <a href="/proImage/<%=product.image[3]%>" class="MagicZoom"
+                                            data-options="zoomDistance: 1000"><img
+                                                src="/proImage/<%=product.image[3]%>"></a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product__details__content">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="product__details__text">
+                                <% const stock=product.stock %>
+                                    <div>
+                                        <% let message=stock> 0 ? null : 'Product is out of stock.'; %>
+                                            <h6 class="text-danger">
+                                                <%= message %>
+                                            </h6>
+                                    </div>
+                                    <h4>
+                                        <%=product.title%>
+                                    </h4>
+                                    <div class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <span> - 5 Reviews</span>
+                                    </div>
+                                    <h3>
+                                        <%=product.price%> <span>70.00</span>
+                                    </h3>
+                                    <p>Coat with quilted lining and an adjustable hood. Featuring long sleeves with
+                                        adjustable
+                                        cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip
+                                        fastening
+                                        with placket.</p>
+                                    <div class="product__details__option">
+                                        <div class="product__details__option__size">
+                                            <span>Size:</span>
+                                            <label for="xxl">xxl
+                                                <input type="radio" id="xxl">
+                                            </label>
+                                            <label class="active" for="xl">xl
+                                                <input type="radio" id="xl">
+                                            </label>
+                                            <label for="l">l
+                                                <input type="radio" id="l">
+                                            </label>
+                                            <label for="sm">s
+                                                <input type="radio" id="sm">
+                                            </label>
+                                        </div>
+                                        <div class="product__details__option__color">
+                                            <span>Color:</span>
+                                            <label class="c-1" for="sp-1">
+                                                <input type="radio" id="sp-1">
+                                            </label>
+                                            <label class="c-2" for="sp-2">
+                                                <input type="radio" id="sp-2">
+                                            </label>
+                                            <label class="c-3" for="sp-3">
+                                                <input type="radio" id="sp-3">
+                                            </label>
+                                            <label class="c-4" for="sp-4">
+                                                <input type="radio" id="sp-4">
+                                            </label>
+                                            <label class="c-9" for="sp-9">
+                                                <input type="radio" id="sp-9">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <form action="/addToCart?id=<%=product._id%>" method="post">
+                                        <div class="product__details__cart__option">
+
+                                            <button class="primary-btn" type="submit">add to cart</button>
+                                        </div>
+                                    </form>
+                                    <div class="product__details__btns__option">
+                                        <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
+
+                                    </div>
+                                    <div class="product__details__last__option">
+                                        <h5><span>Guaranteed Safe Checkout</span></h5>
+                                        <img src="img/shop-details/details-payment.png" alt="">
+                                        <ul>
+                                            <li><span>SKU:</span> 3812912</li>
+                                            <li><span>Categories:</span>
+                                                <%=product.category%>
+                                            </li>
+                                            <li><span>Tag:</span> Clothes, Skin, Body</li>
+                                        </ul>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="product__details__tab">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#tabs-5"
+                                            role="tab">Description</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Customer
+                                            Reviews(5)</a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tabs-5" role="tabpanel">
+                                        <div class="product__details__tab__content">
+                                            <p class="note">
+                                                <%=product.description%>.
+                                            </p>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                        <div class="product__details__tab__content">
+                                            <div class="product__details__tab__content__item">
+                                                <h5>Products Reviews</h5>
+                                                <p>A Pocket PC is a handheld computer, which features many of the same
+                                                    capabilities as a modern PC. These handy little devices allow
+                                                    individuals to retrieve and store e-mail messages, create a contact
+                                                    file, coordinate appointments, surf the internet, exchange text
+                                                    messages
+                                                    and more. Every product that is labeled as a Pocket PC must be
+                                                    accompanied with specific software to operate the unit and must
+                                                    feature
+                                                    a touchscreen and touchpad.</p>
+                                                <p>As is the case with any new technology product, the cost of a Pocket
+                                                    PC
+                                                    was substantial during it’s early release. For approximately
+                                                    $700.00,
+                                                    consumers could purchase one of top-of-the-line Pocket PCs in 2003.
+                                                    These days, customers are finding that prices have become much more
+                                                    reasonable now that the newness is wearing off. For approximately
+                                                    $350.00, a new Pocket PC can now be purchased.</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer__about">
+                            <div class="footer__logo">
+                                <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                            </div>
+                            <p>The customer is at the heart of our unique business model, which includes design.</p>
+                            <a href="#"><img src="img/payment.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                        <div class="footer__widget">
+                            <h6>Shopping</h6>
+                            <ul>
+                                <li><a href="#">Clothing Store</a></li>
+                                <li><a href="#">Trending Shoes</a></li>
+                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">Sale</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+                        <div class="footer__widget">
+                            <h6>Shopping</h6>
+                            <ul>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Payment Methods</a></li>
+                                <li><a href="#">Delivary</a></li>
+                                <li><a href="#">Return & Exchanges</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                        <div class="footer__widget">
+                            <h6>NewLetter</h6>
+                            <div class="footer__newslatter">
+                                <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                                <form action="#">
+                                    <input type="text" placeholder="Your email">
+                                    <button type="submit"><span class="icon_mail_alt"></span></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="footer__copyright__text">
+
+                            <p>Copyright ©
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>2020
+                                All rights reserved | MaleFashions <i class="" aria-hidden="true"></i>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        <%- include('../layouts/footer.ejs') %>

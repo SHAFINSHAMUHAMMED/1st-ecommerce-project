@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const userSchema = mongoose.Schema({
+
     username:{
         type:String,
         required:true
@@ -16,6 +17,13 @@ const userSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    image:{
+        type:Buffer,
+    },
+    address:{
+        type:Array,
+        required:true
+        },
    
     is_admin:{
         type:Number,
@@ -27,6 +35,18 @@ const userSchema = mongoose.Schema({
     },is_blocked:{
         type:Number,
         default:0
+    },
+    cartTotal:{
+        type:Number,
+        require:true
+    },
+    wishlist:{
+        type:Array,
+        required:true
+    },
+    wallet:{
+        type:Number,
+        required:true
     }
 })
 

@@ -1,138 +1,354 @@
-<%- include('../layouts/header.ejs') %>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-black" style="border-bottom: 1px solid grey;">
-      <div class="container-fluid d-flex justify-content-between mt-4 mb-3">
-        <a class="ms-5 navbar-brand" href="/admin/home">
-          <img class="ms-" src="/img/logo.png" alt="">
+<%- include('../layouts/adminheader.ejs') %>
 
-        </a>
+<body class="bdy" id="reportsPage">
+  <div class="" id="home">
+    <nav class="navbar navbar-expand-xl">
+      <div class="container h-100 ">
+        <a class="navbar-brand me-0 ms-3" href="/admin/home">
+          <h1 class="tm-site-title mb-0 font"><img src="/img/footer-logo.png" alt=""></h1>
+      </a>
+        <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-justify" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+            </svg></i>
+        </button>
 
-        <button class="btn btn-outline-success" style="height: 40px;"><a class="text-decoration-none text-dark"
-            href="/admin/logout">LogOut</a></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto h-100">
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/home">
+                <i class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-speedometer2" viewBox="0 0 16 16">
+                    <path
+                      d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z" />
+                    <path fill-rule="evenodd"
+                      d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
+                  </svg></i>
+                Dashboard
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
 
-      </div>
-    </nav>
-  </header>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/userData">
+                <i class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
+                  </svg></i>
+                User Data
+              </a>
+            </li>
 
-  <style>
-    /* Style for the control panel section */
-    .control-panel {
-      position: relative;
-      /* Fixed position to keep it in place */
-      top: 0;
-      /* Position it at the top of the page */
-      left: 0;
-      /* Position it on the left side of the page */
-      height: 100%;
-      /* Make it the full height of the page */
-      width: 200px;
-      /* Set a fixed width for the section */
-      background-color: #f0f0f0;
-      /* Set a background color */
-    }
+            <li class="nav-item">
+              <a class="nav-link active" href="/admin/addProduct">
+                <i class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-capslock" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                      d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1H1.654C.78 9.5.326 8.455.924 7.816L7.27 1.047zM14.346 8.5 8 1.731 1.654 8.5H4.5a1 1 0 0 1 1 1v1h5v-1a1 1 0 0 1 1-1h2.846zm-9.846 5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1zm6 0h-5v1h5v-1z" />
+                  </svg></i>
+                Add Product
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
 
-    @media only screen and (max-width: 768px) {
-      .control-panel {
-        position: fixed;
-        /* Change position to relative for responsive layout */
-        width: 25%;
-        /* Set width to 100% to take up full width of the screen */
-        height: 100%;
-      }
-    }
-  </style>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/products">
+                <i class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-box-seam" viewBox="0 0 16 16">
+                    <path
+                      d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+                  </svg></i>
+                Products
+              </a>
+            </li>
 
-  <div class="d-flex">
-    <div class="control-panel d-flex justify-content-center " style="height: 100vh; background-color: grey;">
-      <!-- Your control panel content goes here -->
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/category">
+                <i class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-c-square-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm6.146 4.992c-1.212 0-1.927.92-1.927 2.502v1.06c0 1.571.703 2.462 1.927 2.462.979 0 1.641-.586 1.729-1.418h1.295v.093c-.1 1.448-1.354 2.467-3.03 2.467-2.091 0-3.269-1.336-3.269-3.603V7.482c0-2.261 1.201-3.638 3.27-3.638 1.681 0 2.935 1.054 3.029 2.572v.088H9.875c-.088-.879-.768-1.512-1.729-1.512Z" />
+                  </svg></i>
+                Category
+              </a>
+            </li>
 
-      <div class="row mt-5">
-        <div class="">
-          <a class="text-decoration-none text-white" style="font-size: small" href="/admin/home">Home</a><br>
-          <a class="text-decoration-none text-white" style="font-size: small" href="/admin/userData">USER DATA</a><br>
-          <a class="text-decoration-none text-white" style="font-size: small" href="/admin/addProduct">ADD
-            PRODUCT</a><br>
-          <a class="text-decoration-none text-white" style="font-size: small" href="/admin/products">PRODUCTS</a><br>
-          <a class="text-decoration-none text-white" style="font-size: small" href="">CATEGORY</a>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/Coupons">
+                <i class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-box-seam" viewBox="0 0 16 16">
+                    <path
+                      d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+                  </svg></i>
+                Coupons
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-block" href="/admin/logout">
+                <b>Logout</b>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
+    </nav>
 
-    <div class="d-flex justify-content-center" style="width: 100%;">
-      <div style="width: 100%;">
-        <!-- The rest of your HTML content goes here -->
-
-        <div class="container tm-mt-big tm-mb-big">
-          <div class="row">
-            <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
-              <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-                <div class="row tm-edit-product-row">
-                  <div class="col-xl-6 col-lg-6 col-md-12">
-                    <form action="/admin/addProduct" method="post" class="tm-edit-product-form"
-                      enctype="multipart/form-data">
-                      <div class="form-group mb-3">
-                        <input name="title" type="text" placeholder="Product Name" class="form-control" />
-                      </div>
-                      <div class="form-group mb-3">
-                        <input name="brand" type="text" placeholder="Brand" class="form-control" />
-                      </div>
-                      <div class="form-group mb-3">
-                        <input name="description" type="text" placeholder="Description" class="form-control" />
-                      </div>
-                      <div class="form-group mb-3">
-                        <input name="price" type="float" placeholder="Price" class="form-control" />
-                      </div>
-                      <div class="form-group mb-3">
-                        <input name="stocks" type="number" placeholder="Stock" class="form-control" />
-                      </div>
-                      <div class="form-group mb-3">
-                        <label for="category">Category</label>
-                        <select name="category" class="custom-select tm-select-accounts" id="category">
-
-                          <% if(category.length>0){
-                            for(let i=0;i<category.length;i++){ %>
-                              <option value="<%=category[i].category%>">
-                                <%=category[i].category%>
-                              </option>
-                              <% } } %>
-                        </select>
-                      </div>
-                  </div>
-
-                  <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                    <div>
-                      <div class="d-flex justify-content-center mb-4">
-                        <img src="https://cdn4.iconfinder.com/data/icons/social-communication/142/add_photo-512.png"
-                          alt="example placeholder" style="width: 200px;" />
-                      </div>
-                      <div class="d-flex justify-content-center">
-                        <div class="btn btn-dark btn-rounded">
-                          <label class="form-label text-white m-1" for="customFile2">Add Image</label>
-                          <input type="file" name="image" class="form-control d-none" id="customFile2" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-6 mb-4">
-                    <small class="text-danger"><%-message-%></small>
-                    <button type="submit" class="btn btn-dark text-uppercase">Add Product Now</button>
-                  </div>
-                  </form>
-                  <form action="/admin/addCategory" method="post">
-                    <div class="row">
-                      <div class="col-6">
-                        <input class="form-control" type="text" name="newcategory" placeholder="new category"><br>
-                        <button class="btn btn-dark text-uppercase" type="submit">Add New Category</button>
-                      </div>
-                    </div>
-                  </form>
+    <div class="container tm-mt-big tm-mb-big">
+    <div class="row">
+      <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+        <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+          <div class="row tm-edit-product-row">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <form action="/admin/addProduct" method="post" class="tm-edit-product-form" id="addform"  enctype="multipart/form-data">
+                <div class="form-group mb-3 text-white">
+                  <h6>Product Name</h6>
+                  <input name="title" type="text" placeholder="" id="title" class="form-control"/>
                 </div>
+                <div class="form-group mb-3 text-white">
+                  <h6>Brand</h6>
+                  <input name="brand" type="text" placeholder="" id="brand" class="form-control"/>
+                </div>
+                <div class="form-group mb-3 text-white">
+                  <h6>Description</h6>
+                  <textarea name="description" type="text" placeholder="" id="description" class="form-control"></textarea>
+                </div>
+                <div class="form-group mb-3 text-white">
+                  <h6>Price</h6>
+                  <input name="price" type="float" placeholder="" id="price" class="form-control"/>
+                </div>
+                <div class="form-group mb-3 text-white">
+                  <h6>Stock</h6>
+                  <input name="stock" type="number" placeholder="" id="stock" class="form-control"/>
+                </div>
+                <div class="form-group mb-3 text-white">
+                  <h6>Category</h6>
+                  <select name="category" class="custom-select tm-select-accounts " id="category">
+                    
+                    <option selected>Select Category</option>
+                   <%
+                      if(category.length>0){
+                         for(let i=0;i<category.length;i++){
+                   %>
+                      <option value="<%=category[i].category%>"><%=category[i].category%></option>
+                          <% }
+                   } %>
+                  </select>
+                </div> 
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+              <div>
+                <div class="d-flex justify-content-center mb-4">
+                    <img src="/add img.svg" alt="">
+                </div>
+                <style>
+                      .leftbtn {
+                        text-align: left;
+                      }
+                      </style>
+                      
+                <div class="d-flex justify-content-center">
+                    <div class=" btn btn-dark btn-rounded ">
+                      <div class="leftbtn"><h6>Add Images</h6></div>
+                      <label class=" form-label text-white mb-0" for="customFile2"><small>Image</small></label>
+                      <input type="file" name="image" class="form-control" onchange="return fileValidation()" id="customFile2" multiple />
+                      
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+            <p class="p-0 m-0">SIZE</p>
+
+                      <div class="d-flex form-check">
+                      <div style="width:40px;" class="  d-flex justify-content-between align-items-center">
+                        <label class="p-2" for="">XS</label>
+                        <input class=" mb-2 " type="checkbox" name="size" value="xs">
+                      </div>
+                      <div style="width:40px;" class="ms-2 d-flex justify-content-between align-items-center">
+                        <label class="p-2" for="">S</label>
+                        <input class=" mb-2 " type="checkbox" name="size" value="s">
+                      </div>
+                      <div style="width:40px;" class="ms-2 d-flex justify-content-between align-items-center">
+                        <label class="p-2" for="">M</label>
+                        <input class=" mb-2 " type="checkbox" name="size" value="m">
+                      </div>
+                      <div style="width:40px;" class="ms-2 d-flex justify-content-between align-items-center">
+                        <label class="p-2" for="">XL</label>
+                        <input class=" mb-2 " type="checkbox" name="size" value="xl">
+                      </div>
+                      <div style="width:40px;" class="ms-2 d-flex justify-content-between align-items-center">
+                        <label class="p-2" for="">XXL</label>
+                        <input class=" mb-2 " type="checkbox" name="size" value="xxl">
+                      </div>
+
+                    </div>
+                    <p class="p-0 mb-3">COLOR</p>
+                    <div class="d-flex form-check ms-2">
+                      <div style="width:40px;" class="  d-flex justify-content-between align-items-center">
+                        <label class=" p-2 bg-success rounded-pill" for=""></label>
+                        <input class=" mb-2 " type="checkbox" name="color" value="greeen">
+                      </div>
+                      <div style="width:40px;" class="ms-2 d-flex justify-content-between align-items-center">
+                        <label class=" p-2 bg-danger rounded-pill" for=""></label>
+                        <input class=" mb-2 " type="checkbox" name="color" value="red">
+                      </div>
+                      <div style="width:40px;" class="ms-2 d-flex justify-content-between align-items-center">
+                        <label class=" p-2 bg-warning rounded-pill" for=""></label>
+                        <input class=" mb-2 " type="checkbox" name="color" value="yellow">
+                      </div>
+                      <div style="width:40px;" class="ms-2 d-flex justify-content-between align-items-center">
+                        <label class=" p-2 bg-dark rounded-pill" for=""></label>
+                        <input class=" mb-2 " type="checkbox" name="color" value="black">
+                      </div>
+                      <div style="width:40px;" class="ms-2 d-flex justify-content-between align-items-center">
+                        <label class=" p-2 bg-primary rounded-pill" for=""></label>
+                        <input class=" mb-2 " type="checkbox" name="color" value="blue">
+                      </div>
+
+
+          </div>
+        </div>
+
+        <small class="text-danger error"></small>
+            <%if(message!=null){%>
+                  <div class="mt-3 ms-3"><small class="text-danger"><%=message%></small></div>
+                  
+                <%}%> 
+                <div class="mt-3 ms-3"><small class="text-success"><%=mess%></small></div>
+            </div>
+            <div class="col-6 mb-4">
+              <button type="submit" class="btn btn-dark">Add Product Now</button>
+            </div>
+          </form>
+          <form action="/admin/addCategory" method="post">
+            <div class="row">
+              <div class="col-6">
+                <a href="/admin/category" class="btn btn-dark">Add new category</a>
               </div>
             </div>
+           </form>
+               
           </div>
         </div>
       </div>
     </div>
   </div>
+  </div>
 
-  <%- include('../layouts/footer.ejs') %>
+  <script>
+  
+  const form = document.getElementById("addform");
+  const title = document.getElementById("title");
+  const brand = document.getElementById("brand");
+  const price = document.getElementById("price");
+  const description= document.getElementById("description");
+  const stock = document.getElementById("stock");
+  const errorElement = document.querySelector('.error');
+  const sizeInputs = document.querySelectorAll('input[name="size"]');
+  const colorInputs = document.querySelectorAll('input[name="color"]');
+  let sizeChecked = false;
+  let colorChecked = false;
+
+  form.addEventListener('submit', (e) => {
+  let messages = '';
+  
+  if (title.value.trim().length===0) {
+    messages = 'Please fill all fields.';
+  }
+
+  if (brand.value.trim().length===0) {
+    messages = 'Please fill all fields.';
+  }
+
+  if(price.value.toString().trim().length===0) {
+    messages = 'Please fill all fields.';
+  }
+
+  
+  if (description.value.trim().length===0) {
+    messages = 'Please fill all fields.';
+  }
+
+  
+  if (stock.value.toString().trim().length===0) {
+    messages = 'Please fill all fields.';
+  }
+
+ 
+  // check if at least one size checkbox is checked
+  sizeInputs.forEach(input => {
+    if (input.checked) {
+      sizeChecked = true;
+    }
+  });
+  colorInputs.forEach(input => {
+    if (input.checked) {
+      colorChecked = true;
+    }
+  });
+  if (!sizeChecked || !colorChecked) {
+    e.preventDefault();
+    messages = 'Choose color and size'
+  }
+  if (messages.length > 0) {
+    e.preventDefault();
+    errorElement.innerText = messages;
+  }
+});
+
+  
+</script>
+
+<script>
+  function fileValidation() {
+  var fileInput = document.getElementById('customFile2');
+  var files = fileInput.files;
+  var errorMessage = "";
+
+  var allowedExtensions =
+    /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+  // Loop through each file and validate
+  for (var i = 0; i < files.length; i++) {
+    var filePath = files[i].name;
+
+    if (!allowedExtensions.exec(filePath)) {
+      errorMessage += files[i].name + " is an invalid file type.\n";
+    }
+  }
+
+  if (errorMessage !== "") {
+    alert(errorMessage);
+    fileInput.value = '';
+    return false;
+  } else {
+    // Display image preview
+    for (var i = 0; i < files.length; i++) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        var img = document.createElement('img');
+        img.src = e.target.result;
+        document.getElementById('imagePreview').appendChild(img);
+      };
+
+      reader.readAsDataURL(files[i]);
+    }
+  }
+}
+
+document.querySelectorAll('input[type="checkbox"][name="size"]').forEach((checkbox) => {
+  checkbox.addEventListener('change', () => {
+    atLeastOneChecked = document.querySelectorAll('input[type="checkbox"][name="size"]:checked').length > 0;
+  });
+});
+
+</script>
+
+
+
+  <%- include('../layouts/adminfooter.ejs') %>

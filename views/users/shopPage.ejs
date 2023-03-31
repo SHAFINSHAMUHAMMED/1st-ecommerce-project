@@ -1,0 +1,609 @@
+<%- include('../layouts/header.ejs') %>
+
+<style>
+
+                  /* Styles for desktop and larger screens */
+.shop__sidebar {
+display: flex;
+flex-direction: column;
+width: 75%;
+margin-right: 2rem;
+}
+
+.sidebar__categories, .sidebar__filter, .sidebar__sizes {
+margin-bottom: 2rem;
+}
+.section-title{
+    margin-bottom: 10px!important;
+}
+.categories__accordion{
+    margin-left: 25px;
+}
+.card {
+border: none;
+background-color: transparent;
+}
+
+.list {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.list li {
+margin-bottom: 0.5rem;
+}
+
+.list li label {
+display: flex;
+align-items: center;
+}
+
+.list li label input {
+margin-right: 0.5rem;
+}
+
+/* Styles for smaller screens */
+@media screen and (max-width: 768px) {
+.shop__sidebar {
+width: 100%;
+margin-right: 0;
+}
+}
+</style>
+
+
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <header class="header">
+        <div class="header__top" style="background-color: black;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7">
+                        <div class=" mt-3">
+                            <p class="" style="color: white; margin-bottom: 1;">Free shipping, 30-day return or refund
+                                guarantee.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-5">
+                        <div class=" d-flex  justify-content-end mt-4">
+                            <a class="" style="text-decoration: none; color: white;" href="#">FAQs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <header>
+            <nav class="navbar navbar-expand-lg ml-5 navbar-light bg-black">
+                <div class="container-fluid">
+                    <a class="ms-5 navbar-brand" href="/loginHome">
+                        <img class="ms-" src="/img/logo.png" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon bg-light"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item" style="margin-right: 15px;">
+                                <a class="nav-link active tex-hov" aria-current="page" href="/loginHome">HOME</a>
+                            </li>
+                            <li class="nav-item" style="margin-right: 15px;">
+                                <a class="nav-link tex-hov" href="/shopPage">SHOP</a>
+                            </li>
+                            <li class="nav-item" style="margin-right: 15px;">
+                                <a class="nav-link tex-hov" href="/contactus">CONTACT</a>
+                            </li>
+                            <li> <form action="/shopPages" method="post">   <div class="input-group rounded col-lg-12">
+                               
+                                <input onkeyup="filtersearch()" type="text" name="search" class="form-control rounded col-12" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                <input type="submit" class="btn btn-primary" value="Search">
+                               
+                                
+                              </div>  </form></li>
+
+                        </ul>
+
+                    </div>
+                    <div class="col-lg-2 col-md-2 ms-5">
+                        <div class="header__nav__option d-flex">
+                            <a href="/wishList"><img src="/img/icon/heart.png" alt=""></a>
+                            <a href="/addToCart"><img src="/img/icon/cart.png" alt=""> <span>c</span></a>
+                           
+                        </div>
+                    </div>
+                    
+
+                    <div class="header__right__auth col">
+                        <% if(session!=null){ %>
+
+                            <a href="/logout"> <button type="button" class="anni-button"
+                                    style="vertical-align: middle;"><span> Logout</span></button> </a>
+                            <% }else{%>
+                                <a class="" style="color: black;" href="/login"><b> Login </b></a>
+                                <%}%>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <section class="breadcrumb-option">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb__text">
+                            <h4>Product View</h4>
+                            <div class="breadcrumb__links">
+                                <a href="/">Home</a>
+                                <a href="/shopPage">Shop</a>
+                                <span>Product View</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shop Section Begin -->
+        <section class="shop spad">
+            <div class="container">
+                <div class="row">
+
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="left_sidebar_area">
+                                  
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="shop__sidebar ">
+                                            <div class="sidebar__sizes">
+                                                <div class="section-title">
+                                                    <h4>Categories</h4>
+                                                </div>
+                                                <%category.forEach(element => {%>
+                                                    <div class="d-flex justify-content-between">
+                                                <div class="">
+                                                    <label for="">
+                                                        <%=element.category%> </div>
+                                                        <div>
+                                                        <input type="checkbox" onclick="category('<%=element.category%>')" name="<%=element.category%>" id="<%=element.category%>" value="<%=element.category%>">
+                                                        
+                                                    </label>   
+                                                </div>
+                                            </div>
+                                                <%})%>
+                                            </div>
+                                            <div class="sidebar__sizes">
+                                                <div class="section-title">
+                                                    <h4>Shop by price</h4>
+                                                </div>
+                                                <div class="">
+                                                    <div>
+                                                    <label for="">
+                                                        5000-above
+                                                        <input onclick="price(4)" type="checkbox" value="5000" id="FOUR">
+                                                    </label></div><br>
+                                                    <label for="">
+                                                        2000-4999
+                                                        <input onclick="price(3)" type="checkbox" value="2000,4999" id="THREE">
+                                                    </label><br>
+                                                    <label for="">
+                                                        1000-1999
+                                                        <input onclick="price(2)" type="checkbox" value="1000,1999" id="TWO">
+                                                    </label><br>
+                                                    <label for="">
+                                                        0-999
+                                                        <input onclick="price(1)" type="checkbox" value="0,999" id="ONE">
+                                                    </label><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+
+
+                                </div>
+                            </div>
+                            <!--ghth-->
+                            <div class="col-lg-9">
+                                <div class="shop__product__option">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <div class="shop__product__option__left">
+                                                <!-- <p>Showing 1–12 of 126 results</p> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <div class="shop__product__option__right">
+                                                <p>Sort by Price:</p>
+                                                <select>
+                                                    <option value="">Low To High</option>
+                                                    <option value="">High To Low</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" >
+                                    <div class="row" id="Filter">
+                                    <% product.forEach(item=>{%>
+                                       
+                                            <div class="col-lg-4 col-md-6 col-sm-6 align-items" >
+                                                <a href="/productView?id=<%=item._id%>">
+                                                    <div class="product__item">
+                                                        <div class="product__item__pic set-bg"
+                                                            data-setbg="img/product/product-2.jpg">
+                                                            <img src="/proImage/<%=item.image[0]%>" alt="">
+                                                            <ul class="product__hover">
+                                                              
+                                                                <div>
+                                                                    <form
+                                                                        action="/addingTOWishlist?id=<%=item._id%>"
+                                                                        method="post">
+                                                                        <li class=""><button
+                                                                                style="border-color: transparent;"
+                                                                                type="submit"> <img
+                                                                                    src="img/icon/heart.png"
+                                                                                    alt=""></button></li>
+                                                                    </form>
+                                                                    
+                                                                </div>
+                                                                <form action="/addToCart?id=<%=item._id%>"
+                                                                    method="post">
+                                                                    <li><button style="border-color: transparent;"
+                                                                            type="submit"><img src="/img/icon/cart.png"
+                                                                                alt=""></button></li>
+                                                                </form>
+                                                                <% const stock=item.stock %>
+                                                                <% let message=stock> 0 ? null : 'Product is out of stock.'; %>
+                                                    <h6 style="font-size:3vh;" class="text-danger mt-5 col-10">
+                                                        <%= message %>
+                                                    </h6>
+                                                            </ul>
+                                                            
+                                                        </div>
+                                                        
+                                                        <div class="product__item__text">
+                                                            <h6><%- item.title %></h6>
+
+                                                            <div class="rating">
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                            </div>
+                                                            <h5>Rs.<%- item.price %></h5>
+                                                            <div class="product__color__select">
+                                                                <label for="pc-4">
+                                                                    <input type="radio" id="pc-4">
+                                                                </label>
+                                                                <label class="active black" for="pc-5">
+                                                                    <input type="radio" id="pc-5">
+                                                                </label>
+                                                                <label class="grey" for="pc-6">
+                                                                    <input type="radio" id="pc-6">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <% }) %>
+                                </div>
+                            </div>
+                              <!-- ///pagination//// -->
+                                    <%for(let j=1;j<=totalPages;j++){%>
+                                        <%if(totalPages>1){%>
+                                            
+                                          
+                                                    <a class="text-white btn-sm btn-secondary" href="?page=<%=j%>"><%=j%></a>
+                                                   <%}%> 
+                                                   <%}%>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        </div>
+
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer__about">
+                            <div class="footer__logo">
+                                <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                            </div>
+                            <p>The customer is at the heart of our unique business model, which includes design.</p>
+                            <a href="#"><img src="img/payment.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                        <div class="footer__widget">
+                            <h6>Shopping</h6>
+                            <ul>
+                                <li><a href="#">Clothing Store</a></li>
+                                <li><a href="#">Trending Shoes</a></li>
+                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">Sale</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+                        <div class="footer__widget">
+                            <h6>Shopping</h6>
+                            <ul>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Payment Methods</a></li>
+                                <li><a href="#">Delivary</a></li>
+                                <li><a href="#">Return & Exchanges</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                        <div class="footer__widget">
+                            <h6>NewLetter</h6>
+                            <div class="footer__newslatter">
+                                <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                                <form action="#">
+                                    <input type="text" placeholder="Your email">
+                                    <button type="submit"><span class="icon_mail_alt"></span></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="footer__copyright__text">
+
+                            <p>Copyright ©
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>2020
+                                All rights reserved | MaleFashions <i class="" aria-hidden="true"></i>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        <%if(msg!=null){%>
+            <script>
+                new Swal({
+                    title: "Error",
+                    text: "<%=msg%>",
+                    icon: "error",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            </script>
+            <%}%>
+
+            <script>
+        let n = 0
+        let b = 0
+        let categorys = []
+        let search
+        let prices=[]
+        let filterprice=[]
+function category(ID) {
+
+
+if ($(`#${ID}`).is(':checked') == true) {
+    categorys[n] = $(`#${ID}`).val()
+    n++
+    console.log(categorys);
+    console.log($(`#${ID}`).is(':checked'))
+} else {
+    console.log($(`#${ID}`).is(':checked'))
+    console.log(categorys.indexOf(`${$(`#${ID}`).val()}`));
+    let index = categorys.indexOf(`${$(`#${ID}`).val()}`)
+    categorys.splice(index, 1)
+    n--
+    console.log(categorys);
+}
+submit(categorys,filterprice,search)
+
+}
+
+
+function submit(categorys) {
+                                    $.ajax({
+                                        url: '/shopPages',
+                                        type: 'post',
+                                        dataType: 'json',
+                                        contentType: 'application/json',
+                                        data: JSON.stringify({ categorys,filterprice,search}),
+                                        success: (res) => {
+                                            let html = []
+                                            if (res.Data) {
+                                                console.log(res.Data);
+                                                $('#Filter').html('')
+                                                res.Data.forEach(value => {
+                                                    value.forEach((item, i) => {
+                                                        html += `<div class="col-lg-4 col-md-6 col-sm-6">
+                                                <a href="/productView?id=${item._id}">
+                                                    <div class="product__item">
+                                                        <div class="product__item__pic set-bg"
+                                                            data-setbg="img/product/product-2.jpg">
+                                                            <img src="/proImage/${item.image[0].toString('utf8')}" alt="">
+                                                            <ul class="product__hover">
+                                                              
+                                                                <div>
+                                                                    <form
+                                                                        action="/addingTOWishlist?id=${item._id}"
+                                                                        method="post">
+                                                                        <li class=""><button
+                                                                                style="border-color: transparent;"
+                                                                                type="submit"> <img
+                                                                                    src="img/icon/heart.png"
+                                                                                    alt=""></button></li>
+                                                                    </form>
+                                                                    
+                                                                </div>
+                                                                <form action="/addToCart?id=${item._id}"
+                                                                    method="post">
+                                                                    <li><button style="border-color: transparent;"
+                                                                            type="submit"><img src="/img/icon/cart.png"
+                                                                                alt=""></button></li>
+                                                                </form>
+                                                              
+                                                            </ul>
+                                                            
+                                                        </div>
+                                                        
+                                                        <div class="product__item__text">
+                                                            <h6>${item.title}</h6>
+
+                                                            <div class="rating">
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                            </div>
+                                                            <h5>Rs.${item.price}</h5>
+                                                            <div class="product__color__select">
+                                                                <label for="pc-4">
+                                                                    <input type="radio" id="pc-4">
+                                                                </label>
+                                                                <label class="active black" for="pc-5">
+                                                                    <input type="radio" id="pc-5">
+                                                                </label>
+                                                                <label class="grey" for="pc-6">
+                                                                    <input type="radio" id="pc-6">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div> `
+
+                                                    })
+
+                                                });
+
+                                                $('#Filter').html(html)
+
+                                            }
+                                        }
+                                    })
+                                }
+
+                                function filtersearch() {
+                                    search = $('#search').val()
+                                    submit(categorys, search,filterprice)
+                                }
+
+
+                                function price(check){
+                                    filterprice=[]
+                                    let one,two,three,fore
+                                    let n=0,index
+                                    if($("#ONE").is(':checked')==true){
+                                     one=$("#ONE").val()
+                                     prices[n]=one
+                                     n++
+                                    }else if(check==1){
+                                        index=prices.indexOf($("#ONE").val())
+                                        prices.splice(index,1)
+                                        
+                                    }
+                                    if($("#TWO").is(':checked')==true){
+                                        two=$("#TWO").val()
+                                        prices[n]=two
+                                        n++
+                                    }else if(check==2){
+                                        index=prices.indexOf($("#TWO").val())
+                                        prices.splice(index,1)
+                                        
+                                    }
+                                    if($("#THREE").is(':checked')==true){
+                                        three=$("#THREE").val()
+                                        prices[n]=three
+                                        n++
+                                    }else if(check==3){
+                                        index=prices.indexOf($("#THREE").val())
+                                        prices.splice(index,1)
+                                    
+                                    }
+                                    if($("#FOUR").is(':checked')==true){
+                                        fore=$("#FOUR").val()
+                                        prices[n]=fore
+                                        n++
+                                    }else if(check==4){
+                                        index=prices.indexOf($("#FOUR").val())
+                                        prices.splice(index,1)
+                                        
+                                    }
+                                    let length
+                                    if (prices) {
+                                         length=prices.length
+                                    }
+                                   
+                                //    console.log(prices[length-1].split(',').length)
+                                    if(prices.length==1&&prices[length-1].split(',').length==2){
+                                        let first=[prices[length-1]]
+                                        first=first[0].split(',')
+        
+                                        filterprice[0]=first[0]
+                                        filterprice[1]=first[1]
+                                        
+                                    }else if(prices.length==1&&prices[length-1].split(',').length==1){
+                                        console.log('50000');
+                                        let first=[]
+                                         first[0]=prices[0]
+                                       filterprice[0]=first[0]
+                                        console.log(filterprice);
+                                    }else if(prices.length>1&&prices[length-1].split(',').length==2) {
+                                        let first=[prices[0]]
+                                        let second=[prices[length-1]]
+                                    first=first[0].split(',')
+                                    second=second[0].split(',')
+                                    filterprice[0]=first[0]
+                                    filterprice[1]=second[1]
+                                        console.log(filterprice);
+                                    }else if(prices.length>1&&prices[length-1].split(',').length==1){
+                                        let first=[prices[0]]
+                                    first=first[0].split(',')
+                                    filterprice[0]=first[0]
+                                        console.log(filterprice);
+                                        console.log('dhcf');
+                                    }
+                                    submit(categorys,search,filterprice)
+                                }
+
+    </script>
+
+
+                <%- include('../layouts/footer.ejs') %>
+
+
+
+
+  
+
+
+
+
